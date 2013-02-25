@@ -1,4 +1,7 @@
 Reservation::Application.routes.draw do
+  resources :kinos
+
+
   resources :films
 
 
