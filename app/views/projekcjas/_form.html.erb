@@ -1,0 +1,17 @@
+<%= form_for(@projekcja) do |f| %>
+  <% if @projekcja.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@projekcja.errors.count, "error") %> prohibited this projekcja from being saved:</h2>
+
+      <ul>
+      <% @projekcja.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
