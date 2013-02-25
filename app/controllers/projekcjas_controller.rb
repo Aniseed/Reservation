@@ -1,4 +1,6 @@
 class ProjekcjasController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /projekcjas
   # GET /projekcjas.json
   def index

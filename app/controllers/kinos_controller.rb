@@ -1,4 +1,6 @@
 class KinosController < ApplicationController
+  before_filter :authenticate, :except => [:index]
+  
   # GET /kinos
   # GET /kinos.json
   def index

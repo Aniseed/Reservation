@@ -1,3 +1,7 @@
 class Kino < ActiveRecord::Base
-  # attr_accessible :title, :body
+	has_many :film
+
+	acts_as_gmappable :process_geocoding => false
+  
+  attr_accessible :nazwa, :szerokosc, :dlugosc
 end

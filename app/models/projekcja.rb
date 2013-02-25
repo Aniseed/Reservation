@@ -1,3 +1,5 @@
 class Projekcja < ActiveRecord::Base
-  # attr_accessible :title, :body
+	belongs_to :film
+  
+  attr_accessible :data, :godzina
 end

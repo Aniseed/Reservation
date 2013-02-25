@@ -1,3 +1,5 @@
 class Film < ActiveRecord::Base
-  # attr_accessible :title, :body
+	belongs_to :kino
+  
+  attr_accessible :tytul, :rok
 end
