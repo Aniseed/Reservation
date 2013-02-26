@@ -1,5 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h1>Rezerwacja nr <%= @rezerwacja.id %></h1>
 
+<table>
+  <tr>
+    <th>Termin:</th>
+    <th>Imie i nazwisko:</th>
+  </tr>
 
-<%= link_to 'Edit', edit_rezerwacja_path(@rezerwacja) %> |
-<%= link_to 'Back', rezerwacjas_path %>
+  <tr>
+    <td><%= @rezerwacja.termin %></td>
+    <td><%= @rezerwacja.imie + " " + @rezerwacja.nazwisko %></td>
+  </tr>
+</table>
+<%= link_to 'Powrót', kino_film_url(@kino.id) %>

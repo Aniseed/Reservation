@@ -11,8 +11,7 @@
   <tr>
     <td><%= film.rok %></td>
     <td><%= film.tytul %></td>
-    <td><%= link_to 'Pokaż godziny seansów', kino_film_path(film) %></td>
+    <td><%= link_to 'Pokaż godziny seansów', kino_film_path(@kino,film) %></td>
   </tr>
 <% end %>
 </table>
-

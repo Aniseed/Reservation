@@ -4,6 +4,7 @@ class ProjekcjasController < ApplicationController
   # GET /projekcjas
   # GET /projekcjas.json
   def index
+    @film = Film.find(params[:film_id])
     @projekcje = Projekcja.all
 
     respond_to do |format|
@@ -15,7 +16,9 @@ class ProjekcjasController < ApplicationController
   # GET /projekcjas/1
   # GET /projekcjas/1.json
   def show
+    @film = Film.find(params[:film_id])
     @projekcja = Projekcja.find(params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,11 +47,15 @@ class ProjekcjasController < ApplicationController
   # POST /projekcjas
   # POST /projekcjas.json
   def create
-    @projekcja = Projekcja.new(params[:projekcja])
+    @kino = Kino.find(params[:kino_id])
+    @film = Film.find(params[:film_id])
+    @projekcja = Projekcja.new(:data => params[:projekcja][:data].to_date,
+                               :godzina => Time.parse(params[:projekcja][:godzina]).strftime("%I:%M %P"),
+                               :film_id => @film.id)
 
     respond_to do |format|
       if @projekcja.save
-        format.html { redirect_to @projekcja, notice: 'Projekcja was successfully created.' }
+        format.html { redirect_to kino_film_projekcjas_url, notice: 'Projekcja was successfully created.' }
         format.json { render json: @projekcja, status: :created, location: @projekcja }
       else
         format.html { render action: "new" }

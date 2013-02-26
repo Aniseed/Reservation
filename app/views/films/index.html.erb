@@ -1,21 +1,17 @@
-<h1>Lista seansów dla <%= @film %></h1>
+<h1>Filmy w kinie <%= @kino.nazwa %></h1>
 
 <table>
   <tr>
-    <th>Data:</th>
-    <th>Godzina:</th>
+    <th>Rok:</th>
+    <th>Tytuł:</th>
     <th></th>
   </tr>
 
-  <% if !@projekcje.nil? %>
-    <% @projekcje.each do |projekcja| %>
-      <tr>
-        <td><%= projekcja.data %></td>
-        <td><%= projekcja.godzina %></td>
-        <td><%= link_to 'Rezerwuj', '' %></td>
-      </tr>
-    <% end %>
-  <% end %>
+<% @films.each do |film| %>
+  <tr>
+    <td><%= film.rok %></td>
+    <td><%= film.tytul %></td>
+    <td><%= link_to 'Pokaż godziny seansów', kino_film_path(@kino.id, film) %></td>
+  </tr>
+<% end %>
 </table>
-
-<br />

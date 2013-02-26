@@ -1,10 +1,12 @@
 class RezerwacjasController < ApplicationController
-  before_filter :authenticate, :except => [:index, :new, :create]
+  before_filter :authenticate, :except => [:new, :create, :show]
 
   # GET /rezerwacjas
   # GET /rezerwacjas.json
   def index
-    @rezerwacjas = Rezerwacja.all
+    @rezerwacje = Rezerwacja.all
+    @film = Film.find(params[:film_id])
+    @projekcja = Projekcja.find(params[:projekcja_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +17,7 @@ class RezerwacjasController < ApplicationController
   # GET /rezerwacjas/1
   # GET /rezerwacjas/1.json
   def show
+    @kino = Kino.find(params[:kino_id])
     @rezerwacja = Rezerwacja.find(params[:id])
 
     respond_to do |format|
@@ -45,11 +48,11 @@ class RezerwacjasController < ApplicationController
   # POST /rezerwacjas
   # POST /rezerwacjas.json
   def create
-    @rezerwacja = Rezerwacja.new(params[:rezerwacja])
+    @rezerwacja = Rezerwacja.new(params[:rezerwacja].merge({:projekcja_id => params[:projekcja_id]}))
 
     respond_to do |format|
       if @rezerwacja.save
-        format.html { redirect_to @rezerwacja, notice: 'Rezerwacja was successfully created.' }
+        format.html { redirect_to kino_film_projekcja_rezerwacja_url(params[:kino_id], params[:film_id],params[:projekcja_id],@rezerwacja), notice: 'Rezerwacja was successfully created.' }
         format.json { render json: @rezerwacja, status: :created, location: @rezerwacja }
       else
         format.html { render action: "new" }
@@ -81,7 +84,7 @@ class RezerwacjasController < ApplicationController
     @rezerwacja.destroy
 
     respond_to do |format|
-      format.html { redirect_to rezerwacjas_url }
+      format.html { redirect_to kino_film_projekcja_rezerwacjas_url }
       format.json { head :no_content }
     end
   end

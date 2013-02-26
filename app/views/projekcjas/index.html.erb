@@ -1,21 +1,17 @@
-<h1>Listing projekcjas</h1>
+<h1>Seanse filmu "<%= @film.tytul %>"</h1>
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
+    <th>Data:</th>
+    <th>Godzina:</th>
     <th></th>
   </tr>
 
-<% @projekcjas.each do |projekcja| %>
+<% @projekcje.each do |projekcja| %>
   <tr>
-    <td><%= link_to 'Show', projekcja %></td>
-    <td><%= link_to 'Edit', edit_projekcja_path(projekcja) %></td>
-    <td><%= link_to 'Destroy', projekcja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= projekcja.data %></td>
+    <td><%= projekcja.godzina %></td>
+    <td><%= link_to 'Rezerwuj', new_kino_film_projekcja_rezerwacja_path(@film.kino.id, @film.id, projekcja) %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Projekcja', new_projekcja_path %>

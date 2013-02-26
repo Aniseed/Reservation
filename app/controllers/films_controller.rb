@@ -4,6 +4,7 @@ class FilmsController < ApplicationController
   # GET /films
   # GET /films.json
   def index
+    @kino = Kino.find(params[:kino_id])
     @films = Film.all
 
     respond_to do |format|
@@ -16,6 +17,7 @@ class FilmsController < ApplicationController
   # GET /films/1.json
   def show
     @film = Film.find(params[:id])
+    @projekcje = Projekcja.find_all_by_film_id(@film.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +49,7 @@ class FilmsController < ApplicationController
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to @film, notice: 'Film was successfully created.' }
+        format.html { redirect_to kino_film_url(params[:kino_id], @film), notice: 'Film was successfully created.' }
         format.json { render json: @film, status: :created, location: @film }
       else
         format.html { render action: "new" }

@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(document).ready(function (){
-	$('#projekcja_data').datepicker();
-	$('#projekcja_godzina').timepicker();
+	$('#projekcja_data').datepicker({dateFormat: 'yy-mm-dd'});
+	$('#projekcja_godzina').timepicker({timeFormat: 'hh:mm'});
+	$('#rezerwacja_termin').datetimepicker({dateFormat: 'yy-mm-dd'});
 });
