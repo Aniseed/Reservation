@@ -1,0 +1,21 @@
+<h1>Listing rezerwacjas</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rezerwacjas.each do |rezerwacja| %>
+  <tr>
+    <td><%= link_to 'Show', rezerwacja %></td>
+    <td><%= link_to 'Edit', edit_rezerwacja_path(rezerwacja) %></td>
+    <td><%= link_to 'Destroy', rezerwacja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rezerwacja', new_rezerwacja_path %>

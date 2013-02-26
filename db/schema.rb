@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225225726) do
+ActiveRecord::Schema.define(:version => 20130226025211) do
 
   create_table "films", :force => true do |t|
     t.integer  "kino_id"
@@ -40,5 +40,17 @@ ActiveRecord::Schema.define(:version => 20130225225726) do
   end
 
   add_index "projekcjas", ["film_id"], :name => "index_projekcjas_on_film_id"
+
+  create_table "rezerwacjas", :force => true do |t|
+    t.datetime "termin"
+    t.string   "imie"
+    t.string   "nazwisko"
+    t.string   "email"
+    t.string   "numer"
+    t.integer  "bilety_normalne"
+    t.integer  "bilety_ulgowe"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
 end
