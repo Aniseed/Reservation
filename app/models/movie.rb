@@ -7,5 +7,7 @@ class Movie < ActiveRecord::Base
 	validates :tytul, :presence => true
 	validates :rok, :presence => true
 	validates :cinema_id, :presence => true
+	validates_numericality_of   :rok, :only_integer => true   
+	validates_numericality_of   :cinema_id, :only_integer => true   
 
 end

@@ -5,6 +5,12 @@ class Cinema < ActiveRecord::Base
   
   attr_accessible :nazwa, :szerokosc, :dlugosc
 
+	validates :nazwa, :presence => true
+	validates :szerokosc, :presence => true
+	validates :dlugosc, :presence => true 
+	validates_numericality_of   :dlugosc, :only_integer => true   
+	validates_numericality_of   :szerokosc, :only_integer => true   
+
   def self.posortowane_po_odleglosci(szer,dlu)
   	cinemas = []
   	Cinema.all.each do |cinema|
