@@ -8,8 +8,8 @@ class Cinema < ActiveRecord::Base
 	validates :nazwa, :presence => true
 	validates :szerokosc, :presence => true
 	validates :dlugosc, :presence => true 
-	validates_numericality_of   :dlugosc, :only_integer => true   
-	validates_numericality_of   :szerokosc, :only_integer => true   
+	#validates_numericality_of   :dlugosc, :only_integer => true   
+	#validates_numericality_of   :szerokosc, :only_integer => true   
 
   def self.posortowane_po_odleglosci(szer,dlu)
   	cinemas = []
