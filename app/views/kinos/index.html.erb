@@ -1,17 +1,18 @@
-<h1>Listing kinos</h1>
-
+<h1>Lista kin</h1>
 <table>
   <tr>
-    <th></th>
-    <th></th>
+    <th>Nazwa:</th>
+    <th>Adres:</th>
+    <th>Odległość:</th>
     <th></th>
   </tr>
 
-<% @kinos.each do |kino| %>
+<% @kina.each do |kino| %>
   <tr>
-    <td><%= link_to 'Show', kino %></td>
-    <td><%= link_to 'Edit', edit_kino_path(kino) %></td>
-    <td><%= link_to 'Destroy', kino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= @kina[1].nazwa %></td>
+    <td><%= @kina[1].adres %></td>
+    <td><%= "#{@kina[0].to_km} km" %></td>
+    <td><%= link_to 'Pokaż', kino %></td>
   </tr>
 <% end %>
 </table>

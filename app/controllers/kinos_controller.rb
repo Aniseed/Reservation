@@ -1,10 +1,12 @@
 class KinosController < ApplicationController
-  before_filter :authenticate, :except => [:index]
-  
+  before_filter :authenticate, :except => [:index, :post_coordinates, :posted_coordinates]
+
   # GET /kinos
   # GET /kinos.json
   def index
-    @kinos = Kino.all
+    @szer = params[:szer]
+    @dlu = params[:dlu]
+    @kina = Kino.posortowane_po_odleglosci(@szer,@dlu)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,6 +82,18 @@ class KinosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to kinos_url }
       format.json { head :no_content }
+    end
+  end
+
+  def post_coordinates
+  end
+
+  def posted_coordinates
+    address = params[:address]
+    wspolrzedne = Geocoder.coordinates(address)
+
+    respond_to do |format|
+      format.html { redirect_to kinos_path({ :szer => wspolrzedne[0], :dlu => wspolrzedne[1] }) }
     end
   end
 end

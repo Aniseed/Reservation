@@ -7,6 +7,7 @@ Reservation::Application.routes.draw do
 
   resources :films
 
+  match '/posted_coordinates' => 'kinos#posted_coordinates'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,7 +58,7 @@ Reservation::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'kinos#index'
+  root :to => 'kinos#post_coordinates'
 
   # See how all your routes lay out with "rake routes"
 

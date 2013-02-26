@@ -1,0 +1,10 @@
+<%= form_tag "/posted_coordinates" do |f| %>
+  <div>
+    <%= label_tag 'address', 'Podaj swój adres:' %>
+    <%= text_field_tag 'address' %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Prześlij" %>
+  </div>
+<% end %>
