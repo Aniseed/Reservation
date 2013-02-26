@@ -9,10 +9,10 @@
 
 <% @kina.each do |kino| %>
   <tr>
-    <td><%= @kina[1].nazwa %></td>
-    <td><%= @kina[1].adres %></td>
-    <td><%= "#{@kina[0].to_km} km" %></td>
-    <td><%= link_to 'Pokaż', kino %></td>
+    <td><%= kino[1].nazwa %></td>
+    <td><%= kino[1].adres %></td>
+    <td><%= "#{(kino[0]*1000).to_i.to_f/1000} km" %></td>
+    <td><%= link_to 'Pokaż', kino[1] %></td>
   </tr>
 <% end %>
 </table>

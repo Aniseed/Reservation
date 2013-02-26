@@ -1,11 +1,9 @@
 Reservation::Application.routes.draw do
-  resources :projekcjas
-
-
-  resources :kinos
-
-
-  resources :films
+  resources :kinos do
+    resources :films do
+      resources :projekcjas
+    end
+  end
 
   match '/posted_coordinates' => 'kinos#posted_coordinates'
 

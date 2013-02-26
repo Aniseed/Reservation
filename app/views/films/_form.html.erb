@@ -11,7 +11,22 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.label 'tytuł' %>
+    <%= f.text_field 'tytul' %>
+  </div>
+
+  <div>
+    <%= f.label 'rok' %>
+    <%= f.text_field 'rok' %>
+  </div>
+
+  <div>
+    <%= f.label 'kino' %>
+    <%= f.collection_select :kino_id, Kino.all, :id, :nazwa %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Stwórz' %>
   </div>
 <% end %>

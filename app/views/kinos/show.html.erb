@@ -1,5 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h1>Filmy w kinie <%= @kino.nazwa %></h1>
 
+<table>
+  <tr>
+    <th>Rok:</th>
+    <th>Tytuł:</th>
+    <th></th>
+  </tr>
 
-<%= link_to 'Edit', edit_kino_path(@kino) %> |
-<%= link_to 'Back', kinos_path %>
+<% @filmy.each do |film| %>
+  <tr>
+    <td><%= film.rok %></td>
+    <td><%= film.tytul %></td>
+    <td><%= link_to 'Pokaż godziny seansów', kino_film_path(film) %></td>
+  </tr>
+<% end %>
+</table>
+

@@ -4,9 +4,15 @@ class KinosController < ApplicationController
   # GET /kinos
   # GET /kinos.json
   def index
-    @szer = params[:szer]
-    @dlu = params[:dlu]
-    @kina = Kino.posortowane_po_odleglosci(@szer,@dlu)
+    if cookies[:szer].nil?
+      cookies[:szer] = params[:szer]
+    end
+
+    if cookies[:dlu].nil?
+      cookies[:dlu] = params[:dlu]
+    end
+    
+    @kina = Kino.posortowane_po_odleglosci(cookies[:szer],cookies[:dlu])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +24,7 @@ class KinosController < ApplicationController
   # GET /kinos/1.json
   def show
     @kino = Kino.find(params[:id])
+    @filmy = Film.find_all_by_kino_id(@kino.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +51,9 @@ class KinosController < ApplicationController
   # POST /kinos
   # POST /kinos.json
   def create
-    @kino = Kino.new(params[:kino])
+    @kino = Kino.new(:nazwa => params[:kino][:nazwa],
+                     :szerokosc => params[:kino][:szerokosc],
+                     :dlugosc => params[:kino][:dlugosc])
 
     respond_to do |format|
       if @kino.save

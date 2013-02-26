@@ -1,3 +1,5 @@
+require 'geocoder'
+
 class Kino < ActiveRecord::Base
 	has_many :film
   
@@ -5,17 +7,18 @@ class Kino < ActiveRecord::Base
 
   def self.posortowane_po_odleglosci(szer,dlu)
   	kina = []
-  	Kino.all.each do |k|
-  		kina << [k.odleglosc_od(szer,dlu), k]
+  	Kino.all.each do |kino|
+  		kina << [kino.odleglosc_od(szer,dlu), kino]
   	end
-  	kina.sort
+  	kina.sort {|a,b| a[0] <=> b[0]}
   end
 
   def adres
-  	Geocoder.search(self.szerokosc, self.dlugosc)[0].address
+  	#wyniki nie są zadowalające
+  	Geocoder.search([szerokosc, dlugosc])[0].address
   end
 
   def odleglosc_od(szer, dlu)
-  	Geocoder::Calculations.distance_between([szer,dlu], [szerokosc, dlugosc])
+  	Geocoder::Calculations.distance_between([szer,dlu], [szerokosc, dlugosc], :unit => :km)
   end
 end

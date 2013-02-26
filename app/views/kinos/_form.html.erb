@@ -11,7 +11,22 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.label 'nazwa' %>
+    <%= f.text_field 'nazwa' %>
+  </div>
+
+  <div>
+    <%= f.label 'szerokość geograficzna' %>
+    <%= f.text_field 'szerokosc' %>
+  </div>
+
+  <div>
+    <%= f.label 'długość geograficzna' %>
+    <%= f.text_field 'dlugosc' %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Stwórz' %>
   </div>
 <% end %>
