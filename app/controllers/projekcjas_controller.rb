@@ -4,7 +4,7 @@ class ProjekcjasController < ApplicationController
   # GET /projekcjas
   # GET /projekcjas.json
   def index
-    @projekcjas = Projekcja.all
+    @projekcje = Projekcja.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +26,8 @@ class ProjekcjasController < ApplicationController
   # GET /projekcjas/new
   # GET /projekcjas/new.json
   def new
+    @kino = Kino.find(params[:kino_id])
+    @film = Film.find(params[:film_id])
     @projekcja = Projekcja.new
 
     respond_to do |format|

@@ -26,6 +26,7 @@ class FilmsController < ApplicationController
   # GET /films/new
   # GET /films/new.json
   def new
+    @kino = Kino.find(params[:kino_id])
     @film = Film.new
 
     respond_to do |format|

@@ -1,4 +1,4 @@
-<%= form_for(@film) do |f| %>
+<%= form_for([@kino,@film]) do |f| %>
   <% if @film.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@film.errors.count, "error") %> prohibited this film from being saved:</h2>
@@ -12,18 +12,18 @@
   <% end %>
 
   <div>
-    <%= f.label 'tytuł' %>
+    <%= f.label 'tytuł:' %>
     <%= f.text_field 'tytul' %>
   </div>
 
   <div>
-    <%= f.label 'rok' %>
+    <%= f.label 'rok:' %>
     <%= f.text_field 'rok' %>
   </div>
 
   <div>
-    <%= f.label 'kino' %>
-    <%= f.collection_select :kino_id, Kino.all, :id, :nazwa %>
+    <%= f.label 'Nazwa kina:' %>
+    <%= @kino.nazwa %>
   </div>
 
   <div class="actions">
