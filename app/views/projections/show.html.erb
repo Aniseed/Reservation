@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<h1>Rezerwacje filmu "<%= @movie.tytul %>"</h1>
+
+<table>
+  <tr>
+    <th>Termin:</th>
+    <th>Imie i nazwisko:</th>
+  </tr>
+
+<% @bookings.each do |booking| %>
+  <tr>
+    <td><%= booking.termin %></td>
+    <td><%= booking.imie + " " + booking.nazwisko %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,18 @@
+<h1>Lista kin</h1>
+<table>
+  <tr>
+    <th>Nazwa:</th>
+    <th>Adres:</th>
+    <th>Odległość:</th>
+    <th></th>
+  </tr>
+
+<% @cinemas.each do |cinema| %>
+  <tr>
+    <td><%= cinema[1].nazwa %></td>
+    <td><%= cinema[1].adres %></td>
+    <td><%= "#{(cinema[0]*1000).to_i.to_f/1000} km" %></td>
+    <td><%= link_to 'Pokaż', cinema[1] %></td>
+  </tr>
+<% end %>
+</table>

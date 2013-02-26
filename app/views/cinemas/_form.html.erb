@@ -1,0 +1,32 @@
+<%= form_for(@cinema) do |f| %>
+  <% if @cinema.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cinema.errors.count, "error") %> prohibited this cinema from being saved:</h2>
+
+      <ul>
+      <% @cinema.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label 'nazwa' %>
+    <%= f.text_field 'nazwa' %>
+  </div>
+
+  <div>
+    <%= f.label 'szerokość geograficzna' %>
+    <%= f.text_field 'szerokosc' %>
+  </div>
+
+  <div>
+    <%= f.label 'długość geograficzna' %>
+    <%= f.text_field 'dlugosc' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Stwórz' %>
+  </div>
+<% end %>

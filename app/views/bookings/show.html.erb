@@ -1,0 +1,14 @@
+<h1>Rezerwacja nr <%= @booking.id %></h1>
+
+<table>
+  <tr>
+    <th>Termin:</th>
+    <th>Imie i nazwisko:</th>
+  </tr>
+
+  <tr>
+    <td><%= @booking.termin %></td>
+    <td><%= @booking.imie + " " + @booking.nazwisko %></td>
+  </tr>
+</table>
+<%= link_to 'Powrót', cinema_movie_url(@cinema.id) %>

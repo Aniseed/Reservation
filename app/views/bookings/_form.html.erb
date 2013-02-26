@@ -1,0 +1,57 @@
+<%= form_for([@cinema, @movie, @projection, @booking]) do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %> 
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label 'Termin' %>
+    <%= f.text_field 'termin' %>
+  </div>
+
+  <div>
+    <%= f.label 'Imie' %>
+    <%= f.text_field 'imie' %>
+  </div>
+
+  <div>
+    <%= f.label 'Nazwisko' %>
+    <%= f.text_field 'nazwisko' %>
+  </div>
+
+  <div>
+    <%= f.label 'email' %>
+    <%= f.text_field 'email' %>
+  </div>
+
+  <div>
+    <%= f.label 'numer telefonu' %>
+    <%= f.text_field 'numer' %>
+  </div>
+
+  <div>
+    <%= f.label 'bilety_normalne' %>
+    <%= f.select 'bilety_normalne', (0..20).to_a %>
+  </div>
+
+  <div>
+    <%= f.label 'bilety_ulgowe' %>
+    <%= f.select 'bilety_ulgowe', (0..20).to_a %>
+  </div>
+
+  <div>
+    <%= f.label 'Id seansu:' %>
+    <%= @projection.id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Stwórz' %>
+  </div>
+<% end %>

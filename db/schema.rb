@@ -11,37 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226025858) do
+ActiveRecord::Schema.define(:version => 20130226075637) do
 
-  create_table "films", :force => true do |t|
-    t.integer  "kino_id"
-    t.string   "tytul"
-    t.integer  "rok"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "films", ["kino_id"], :name => "index_films_on_kino_id"
-
-  create_table "kinos", :force => true do |t|
-    t.string   "nazwa"
-    t.float    "szerokosc"
-    t.float    "dlugosc"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "projekcjas", :force => true do |t|
-    t.integer  "film_id"
-    t.date     "data"
-    t.time     "godzina"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "projekcjas", ["film_id"], :name => "index_projekcjas_on_film_id"
-
-  create_table "rezerwacjas", :force => true do |t|
+  create_table "bookings", :force => true do |t|
     t.datetime "termin"
     t.string   "imie"
     t.string   "nazwisko"
@@ -51,9 +23,37 @@ ActiveRecord::Schema.define(:version => 20130226025858) do
     t.integer  "bilety_ulgowe"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "projekcja_id"
+    t.integer  "projection_id"
   end
 
-  add_index "rezerwacjas", ["projekcja_id"], :name => "index_rezerwacjas_on_projekcja_id"
+  add_index "bookings", ["projection_id"], :name => "index_reservations_on_projection_id"
+
+  create_table "cinemas", :force => true do |t|
+    t.string   "nazwa"
+    t.float    "szerokosc"
+    t.float    "dlugosc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "movies", :force => true do |t|
+    t.integer  "cinema_id"
+    t.string   "tytul"
+    t.integer  "rok"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "movies", ["cinema_id"], :name => "index_movies_on_cinema_id"
+
+  create_table "projections", :force => true do |t|
+    t.integer  "movie_id"
+    t.date     "data"
+    t.time     "godzina"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "projections", ["movie_id"], :name => "index_projections_on_movie_id"
 
 end

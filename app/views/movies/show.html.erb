@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<h1>Seanse filmu "<%= @movie.tytul %>"</h1>
+
+<table>
+  <tr>
+    <th>Data:</th>
+    <th>Godzina:</th>
+    <th></th>
+  </tr>
+
+<% @projections.each do |projection| %>
+  <tr>
+    <td><%= projection.data %></td>
+    <td><%= projection.godzina %></td>
+    <td><%= link_to 'Rezerwuj', new_cinema_movie_projection_booking_path(@movie.cinema.id, @movie.id, projection) %></td>
+  </tr>
+<% end %>
+</table>
+

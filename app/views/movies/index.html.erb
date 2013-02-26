@@ -1,0 +1,17 @@
+<h1>Filmy w kinie <%= @cinema.nazwa %></h1>
+
+<table>
+  <tr>
+    <th>Rok:</th>
+    <th>Tytuł:</th>
+    <th></th>
+  </tr>
+
+<% @movies.each do |movie| %>
+  <tr>
+    <td><%= movie.rok %></td>
+    <td><%= movie.tytul %></td>
+    <td><%= link_to 'Pokaż godziny seansów', cinema_movie_path(@cinema.id, movie) %></td>
+  </tr>
+<% end %>
+</table>
