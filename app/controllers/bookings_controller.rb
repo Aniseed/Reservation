@@ -67,7 +67,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
 
     respond_to do |format|
-      if @booking.update_attributes(params[:booking])
+      if cinema_movie_projection_booking_url(params[:cinema_id], params[:movie_id],params[:projection_id],@booking).update_attributes(params[:booking])
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
         format.json { head :no_content }
       else

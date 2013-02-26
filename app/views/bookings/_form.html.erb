@@ -1,4 +1,4 @@
-<%= form_for([@cinema, @movie, @projection, @booking]) do |f| %>
+<%= form_for( [:cinema, :movie, :projection, @booking]) do |f| %>
   <% if @booking.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
@@ -44,11 +44,6 @@
   <div>
     <%= f.label 'bilety_ulgowe' %>
     <%= f.select 'bilety_ulgowe', (0..20).to_a %>
-  </div>
-
-  <div>
-    <%= f.label 'Id seansu:' %>
-    <%= @projection.id %>
   </div>
 
   <div class="actions">

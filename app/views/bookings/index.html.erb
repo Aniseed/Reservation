@@ -10,7 +10,7 @@
   <tr>
     <td><%= booking.termin %></td>
     <td><%= booking.imie + " " + booking.nazwisko %></td>
-    <td><%= link_to 'Usuń', cinema_movie_projection_rezerwacja_path(@movie.cinema.id, @movie.id, @projection.id, booking.id), method: :delete, data: { confirm: 'Jesteś pewny?' } %></td>
+    <td><%= link_to 'Usuń', cinema_movie_projection_booking_path(@movie.cinema.id, @movie.id, @projection.id, booking.id), method: :delete, data: { confirm: 'Jesteś pewny?' } %></td>
   </tr>
 <% end %>
 </table>
