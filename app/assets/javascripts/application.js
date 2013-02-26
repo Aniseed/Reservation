@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
+//= require jquery-ui-timepicker-addon
 //= require_tree .
 
-$(function (){
-	$('#projekcja_w_dniu').datepicker();
+$(document).ready(function (){
+	$('#projekcja_data').datepicker();
+	$('#projekcja_godzina').timepicker();
 });

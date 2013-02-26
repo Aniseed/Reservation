@@ -1,4 +1,6 @@
 class RezerwacjasController < ApplicationController
+  before_filter :authenticate, :except => [:index, :new, :create]
+
   # GET /rezerwacjas
   # GET /rezerwacjas.json
   def index
@@ -24,6 +26,9 @@ class RezerwacjasController < ApplicationController
   # GET /rezerwacjas/new
   # GET /rezerwacjas/new.json
   def new
+    @kino = Kino.find(params[:kino_id])
+    @film = Film.find(params[:film_id])
+    @projekcja = Projekcja.find(params[:projekcja_id])
     @rezerwacja = Rezerwacja.new
 
     respond_to do |format|

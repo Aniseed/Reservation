@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 
 gem "geocoder"
 gem "geoip"
+gem 'jquery-ui-rails'
 gem 'mysql2'
 
 
