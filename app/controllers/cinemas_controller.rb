@@ -4,14 +4,17 @@ class CinemasController < ApplicationController
   # GET /cinemas
   # GET /cinemas.json
   def index
+	# przechowuje współrzędne użytkownika, aby nie podawał szerokości geograficznej za każdym razem
     if cookies[:szer].nil?
       cookies[:szer] = params[:szer]
     end
 
+	# przechowuje współrzędne użytkownika, aby nie podawał dłgości gepgraficznej za każdym razem
     if cookies[:dlu].nil?
       cookies[:dlu] = params[:dlu]
     end
     
+	# posortowanie listy kin po odległości
     @cinemas = Cinema.posortowane_po_odleglosci(cookies[:szer],cookies[:dlu])
 
     respond_to do |format|
@@ -94,13 +97,16 @@ class CinemasController < ApplicationController
     end
   end
 
+	# nie wiem czy to użyjemy gdzieś
   def post_coordinates
   end
 
+	# przekierowanie na listę kin, po naciśnięciu przycisku wypełnienia lokalizacji
   def posted_coordinates
     address = params[:address]
-    wspolrzedne = Geocoder.coordinates(address)
+    wspolrzedne = Geocoder.coordinates(address) # wykonanie metody coordinates z modułu Geocoder, który implementuje google maps api - ! uwaga tylko 2500 zapytań dziennie można!
 
+	# przekazanie współrzędnych do url do metody 'index'
     respond_to do |format|
       format.html { redirect_to cinemas_path({ :szer => wspolrzedne[0], :dlu => wspolrzedne[1] }) }
     end

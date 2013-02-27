@@ -16,6 +16,8 @@
 //= require jquery-ui-timepicker-addon
 //= require_tree .
 
+
+// przypisanie funkcji kalendarza do odpowiednich pól
 $(document).ready(function (){
 	$('#projection_data').datepicker({dateFormat: 'yy-mm-dd'});
 	$('#projection_godzina').timepicker({timeFormat: 'hh:mm'});

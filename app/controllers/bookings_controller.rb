@@ -84,6 +84,7 @@ class BookingsController < ApplicationController
     @booking.destroy
 
     respond_to do |format|
+      # _url which returns the same path prefixed with the current host, port and path prefix
       format.html { redirect_to cinema_movie_projection_bookings_url }
       format.json { head :no_content }
     end
